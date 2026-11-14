@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="寫下今天的日記，附上照片，依時間回顧。">
+  <title>日記整理網</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script src="./assets/js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="frame masthead">
+      <a href="./index.html" class="wordmark">日記整理網</a>
+      <a class="jump" href="#timeline">我的時間軸 <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+  <main class="frame">
+    <div class="intro">
+      <time id="today"></time>
+      <h1>今天，<br class="mobile-break">記下些什麼？</h1>
+      <p>寫下一段文字，留下一張照片。</p>
+    </div>
+    <div class="layout">
+      <section class="paper" aria-labelledby="compose-title">
+        <h2 id="compose-title">寫日記</h2>
+        <form id="entry-form">
+          <label for="body">日記內容</label>
+          <textarea id="body" name="body" rows="6" maxlength="2000" required placeholder="今天發生了什麼？"></textarea>
+          <div class="field-caption"><span id="character-count">0 / 2,000</span></div>
+          <div class="photo-field">
+            <label for="photo">附上圖片 <span class="optional">選填</span></label>
+            <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif" aria-describedby="photo-help">
+            <small id="photo-help">JPEG、PNG、WebP 或 GIF，最多 10 MB。</small>
+            <div id="photo-preview" class="photo-preview" hidden>
+              <img id="preview-image" alt="待儲存的日記圖片">
+              <button id="remove-photo" class="quiet-button" type="button">移除圖片</button>
+            </div>
+          </div>
+          <button id="save-entry" class="primary-button" type="submit" disabled>儲存日記</button>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section id="timeline" aria-labelledby="timeline-title">
+        <div class="timeline-heading">
+          <h2 id="timeline-title">我的時間軸</h2>
+          <span id="entry-count"></span>
+        </div>
+        <div id="empty-state" class="empty-state">
+          <p id="empty-message" role="status">正在讀取日記…</p>
+        </div>
+        <ol id="entries" class="entries" hidden></ol>
+      </section>
+    </div>
+  </main>
+  <footer class="frame footer">日記與圖片儲存在此瀏覽器。</footer>
+</body>
+</html>
